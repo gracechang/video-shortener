@@ -1,5 +1,33 @@
 # Video Shortener
 
+This program takes a video and uses machine learning to shorten the video by cutting out “uncessessary”
+frames. The result is a shortened video that is not sped up yet still (supposedly) contains the main parts
+of the video.
+
+The inspiration for this program was feeling impatience for cooking videos and other types of video where I
+found myself wishing I could just quickly get to the final product.
+
+## Example Output
+These are different links to different shortened videos of the canonical Big Buck Bunny
+(https://peach.blender.org/) short video ( threshold is how high of a score a frame should to make the cut to
+the new video).
+
+As the threshold goes higher, fewer frames pass the test and the resulting video is shorter
+
+**Original ( 9:56 ):** https://www.youtube.com/watch?v=NCsxpz6ro-I
+
+**Threshold 0.1 ( 6:45 ):** https://www.youtube.com/watch?v=2ywc_QCUf3g
+
+**Threshold 0.2 ( 2:40 ):** https://www.youtube.com/watch?v=CIZIj5WoalY
+
+**Threshold 0.3 ( 1:01 ):** https://www.youtube.com/watch?v=JX8mUOmzCUo
+
+## Implementation
+Split movie into frames, score each frame though a pre-trained machine learning image classification model. If
+score is higher than a certain threshold, save the frame and accompanying audio into a new video. Resulting
+video "should" be a video with only the "important" frames.
+The higher the threshold, the higher the frame has to score in the model.
+
 ## Requirements to Run
 
 ### 1. `ffmpeg` and `ffprobe`
